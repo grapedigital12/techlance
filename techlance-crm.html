@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techlance CRM – Smarter Sales. Stronger Relationships.</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue-900: #0A1628;
+  --blue-800: #0D2050;
+  --blue-700: #0E3A8C;
+  --blue-600: #1A56DB;
+  --blue-500: #2471FF;
+  --blue-400: #4D8EFF;
+  --blue-300: #80AAFF;
+  --blue-100: #E8F0FF;
+  --accent: #00D4FF;
+  --accent2: #7C3AED;
+  --white: #FFFFFF;
+  --gray-50: #F8FAFF;
+  --gray-100: #EEF2FF;
+  --gray-400: #94A3B8;
+  --gray-600: #64748B;
+  --gray-800: #1E293B;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --shadow-lg: 0 20px 60px rgba(10,22,40,0.25);
+  --shadow-card: 0 4px 24px rgba(36,113,255,0.12);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--gray-800);
+  overflow-x: hidden;
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,22,40,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 2rem;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.3s;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.logo-icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--blue-500), var(--accent));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800; font-size: 18px; color: white;
+  letter-spacing: -1px;
+  box-shadow: 0 0 20px rgba(36,113,255,0.5);
+}
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 1.35rem; font-weight: 700;
+  color: white; letter-spacing: -0.5px;
+}
+.logo-text span { color: var(--accent); }
+.nav-links {
+  display: flex; align-items: center; gap: 0.25rem;
+  list-style: none;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.nav-links a:hover { color: white; background: rgba(255,255,255,0.08); }
+.nav-cta {
+  display: flex; gap: 0.75rem; align-items: center;
+}
+.btn-ghost {
+  color: rgba(255,255,255,0.8);
+  background: transparent; border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.55rem 1.2rem; border-radius: 8px;
+  font-size: 0.875rem; font-weight: 500; cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.2s; text-decoration: none; display: inline-block;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); color: white; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+  color: white; border: none;
+  padding: 0.6rem 1.4rem; border-radius: 8px;
+  font-size: 0.875rem; font-weight: 600; cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.2s; text-decoration: none; display: inline-block;
+  box-shadow: 0 4px 15px rgba(36,113,255,0.4);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(36,113,255,0.5); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+.hamburger span { width: 22px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; display: block; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--blue-900);
+  position: relative;
+  display: flex; align-items: center;
+  overflow: hidden;
+  padding-top: 68px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(36,113,255,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 10% 80%, rgba(0,212,255,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 90% 10%, rgba(124,58,237,0.12) 0%, transparent 50%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(36,113,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36,113,255,0.07) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 0%, transparent 70%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1280px; margin: 0 auto;
+  padding: 5rem 2rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(36,113,255,0.15);
+  border: 1px solid rgba(36,113,255,0.3);
+  color: var(--blue-300);
+  padding: 0.4rem 1rem; border-radius: 100px;
+  font-size: 0.8rem; font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+.hero-badge::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  margin-bottom: 1.5rem;
+}
+.hero h1 .gradient-text {
+  background: linear-gradient(90deg, var(--blue-400), var(--accent));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero p {
+  font-size: 1.15rem; color: rgba(255,255,255,0.65);
+  line-height: 1.7; max-width: 520px; margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-hero {
+  background: linear-gradient(135deg, var(--blue-500), var(--accent));
+  color: white; border: none;
+  padding: 0.9rem 2rem; border-radius: 12px;
+  font-size: 1rem; font-weight: 600; cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.25s;
+  box-shadow: 0 8px 30px rgba(36,113,255,0.4);
+  text-decoration: none; display: inline-block;
+}
+.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(36,113,255,0.55); }
+.btn-hero-outline {
+  background: transparent; color: white;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  padding: 0.9rem 2rem; border-radius: 12px;
+  font-size: 1rem; font-weight: 500; cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.25s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-hero-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3rem;
+}
+.hero-stat strong {
+  display: block; font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 800; color: white;
+}
+.hero-stat span { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 400; }
+
+/* Hero Dashboard Mockup */
+.hero-visual { position: relative; }
+.dashboard-mock {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-lg), 0 0 80px rgba(36,113,255,0.15);
+  animation: floatUp 0.8s ease both 0.3s;
+}
+@keyframes floatUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+.mock-topbar {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 16px;
+}
+.mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+.mock-topbar-title {
+  flex: 1; margin-left: 8px;
+  font-size: 0.75rem; color: rgba(255,255,255,0.5);
+}
+.mock-cards {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 14px;
+}
+.mock-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 12px;
+}
+.mock-card-label { font-size: 0.65rem; color: rgba(255,255,255,0.45); margin-bottom: 6px; }
+.mock-card-val {
+  font-family: var(--font-display);
+  font-size: 1.2rem; font-weight: 700; color: white;
+}
+.mock-card-sub { font-size: 0.6rem; color: var(--success); margin-top: 2px; }
+.mock-bar-section { margin-bottom: 14px; }
+.mock-bar-title { font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.mock-bars { display: flex; flex-direction: column; gap: 6px; }
+.mock-bar-row { display: flex; align-items: center; gap: 8px; }
+.mock-bar-name { font-size: 0.62rem; color: rgba(255,255,255,0.5); width: 55px; }
+.mock-bar-track { flex: 1; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+.mock-bar-fill { height: 100%; border-radius: 3px; }
+.mock-bar-pct { font-size: 0.6rem; color: rgba(255,255,255,0.45); width: 28px; text-align: right; }
+.mock-pipeline { display: flex; gap: 6px; }
+.mock-pipe-col {
+  flex: 1; background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px; padding: 8px;
+}
+.mock-pipe-head { font-size: 0.58rem; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+.mock-pipe-item {
+  background: rgba(255,255,255,0.08); border-radius: 5px;
+  padding: 5px 6px; margin-bottom: 4px; font-size: 0.58rem; color: rgba(255,255,255,0.65);
+}
+.mock-pipe-amt { color: var(--accent); font-weight: 600; font-size: 0.55rem; }
+.floating-notif {
+  position: absolute; top: -20px; right: -20px;
+  background: white; border-radius: 12px; padding: 10px 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  display: flex; align-items: center; gap: 8px;
+  animation: floatNotif 3s ease-in-out infinite;
+}
+@keyframes floatNotif { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.notif-icon { width: 28px; height: 28px; background: #E8F5E9; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.notif-text strong { display: block; font-size: 0.72rem; color: var(--gray-800); }
+.notif-text span { font-size: 0.65rem; color: var(--gray-400); }
+
+/* ── SECTION COMMONS ── */
+section { padding: 6rem 2rem; }
+.container { max-width: 1280px; margin: 0 auto; }
+.section-tag {
+  display: inline-block; font-size: 0.75rem; font-weight: 700;
+  color: var(--blue-600); background: var(--blue-100);
+  padding: 0.35rem 1rem; border-radius: 100px;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem;
+}
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800; color: var(--blue-900);
+  letter-spacing: -1px; line-height: 1.12;
+  margin-bottom: 1rem;
+}
+.section-sub {
+  font-size: 1.05rem; color: var(--gray-600);
+  max-width: 560px; line-height: 1.7; font-weight: 300;
+}
+.center { text-align: center; }
+.center .section-sub { margin: 0 auto; }
+
+/* ── LOGO STRIP ── */
+.trust-strip {
+  background: var(--gray-50);
+  border-top: 1px solid #E8F0FF;
+  border-bottom: 1px solid #E8F0FF;
+  padding: 2rem 2rem;
+}
+.trust-strip-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; gap: 3rem;
+  flex-wrap: wrap; justify-content: center;
+}
+.trust-label { font-size: 0.8rem; color: var(--gray-400); font-weight: 500; white-space: nowrap; }
+.trust-logos { display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+.trust-logo {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.1rem; color: #CBD5E1; letter-spacing: -0.5px;
+  opacity: 0.7;
+}
+
+/* ── FEATURES ── */
+.features-section { background: white; }
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem; margin-top: 3.5rem;
+}
+.feature-card {
+  background: var(--gray-50);
+  border: 1.5px solid #E8EFFF;
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+.feature-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue-500), var(--accent));
+  opacity: 0; transition: opacity 0.3s;
+}
+.feature-card:hover { border-color: var(--blue-300); box-shadow: var(--shadow-card); transform: translateY(-3px); }
+.feature-card:hover::before { opacity: 1; }
+.feature-icon {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, var(--blue-100), #D4E4FF);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 1.25rem;
+}
+.feature-card h3 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.1rem; color: var(--blue-900);
+  margin-bottom: 0.6rem;
+}
+.feature-card p { font-size: 0.9rem; color: var(--gray-600); line-height: 1.65; }
+
+/* ── HOW IT WORKS ── */
+.how-section { background: var(--blue-900); }
+.how-section .section-heading { color: white; }
+.how-section .section-sub { color: rgba(255,255,255,0.55); }
+.how-section .section-tag { background: rgba(36,113,255,0.2); color: var(--blue-300); }
+.steps-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem; margin-top: 3.5rem; position: relative;
+}
+.step-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius); padding: 2rem;
+  text-align: center;
+  transition: all 0.3s;
+}
+.step-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(36,113,255,0.4); transform: translateY(-4px); }
+.step-num {
+  width: 48px; height: 48px; margin: 0 auto 1.25rem;
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-500));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; color: white;
+  box-shadow: 0 4px 20px rgba(36,113,255,0.4);
+}
+.step-card h3 {
+  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+  color: white; margin-bottom: 0.75rem;
+}
+.step-card p { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.step-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+
+/* ── PRICING ── */
+.pricing-section { background: var(--gray-50); }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem; margin-top: 3.5rem; align-items: start;
+}
+.price-card {
+  background: white;
+  border: 1.5px solid #E8EFFF;
+  border-radius: 20px; padding: 2.5rem;
+  transition: all 0.3s;
+  position: relative;
+}
+.price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+.price-card.featured {
+  background: linear-gradient(160deg, var(--blue-800), var(--blue-700));
+  border-color: var(--blue-500);
+  box-shadow: 0 20px 60px rgba(36,113,255,0.3);
+  transform: scale(1.03);
+}
+.price-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+.popular-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(90deg, var(--blue-500), var(--accent));
+  color: white; font-size: 0.72rem; font-weight: 700;
+  padding: 0.3rem 1.2rem; border-radius: 100px;
+  letter-spacing: 0.5px; white-space: nowrap;
+}
+.price-name {
+  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+  color: var(--gray-600); margin-bottom: 0.5rem;
+}
+.price-card.featured .price-name { color: rgba(255,255,255,0.7); }
+.price-val {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 3rem; color: var(--blue-900); line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.price-card.featured .price-val { color: white; }
+.price-val sup { font-size: 1.2rem; vertical-align: super; }
+.price-val sub { font-size: 0.9rem; color: var(--gray-400); font-weight: 400; }
+.price-card.featured .price-val sub { color: rgba(255,255,255,0.5); }
+.price-desc {
+  font-size: 0.875rem; color: var(--gray-400); margin-bottom: 2rem;
+  line-height: 1.5;
+}
+.price-card.featured .price-desc { color: rgba(255,255,255,0.55); }
+.price-divider { border: none; border-top: 1px solid #F0F4FF; margin-bottom: 1.5rem; }
+.price-card.featured .price-divider { border-top-color: rgba(255,255,255,0.12); }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+.price-features li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.875rem; color: var(--gray-600);
+}
+.price-card.featured .price-features li { color: rgba(255,255,255,0.8); }
+.check {
+  width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+  background: #E8F5E9; color: var(--success);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700;
+}
+.price-card.featured .check { background: rgba(16,185,129,0.2); color: #6EE7B7; }
+.btn-price {
+  display: block; width: 100%; text-align: center;
+  padding: 0.85rem; border-radius: 10px;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+  cursor: pointer; text-decoration: none; transition: all 0.2s; border: none;
+}
+.btn-price-outline {
+  background: transparent; color: var(--blue-600);
+  border: 1.5px solid #C7D9FF;
+}
+.btn-price-outline:hover { background: var(--blue-100); }
+.btn-price-featured {
+  background: linear-gradient(135deg, var(--blue-400), var(--accent));
+  color: white;
+  box-shadow: 0 6px 20px rgba(36,113,255,0.35);
+}
+.btn-price-featured:hover { box-shadow: 0 10px 30px rgba(36,113,255,0.5); transform: translateY(-1px); }
+
+/* ── TESTIMONIALS ── */
+.testimonials-section { background: white; }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem; margin-top: 3.5rem;
+}
+.testimonial-card {
+  background: var(--gray-50); border: 1.5px solid #EEF2FF;
+  border-radius: var(--radius); padding: 2rem;
+  transition: all 0.3s;
+}
+.testimonial-card:hover { border-color: var(--blue-300); box-shadow: var(--shadow-card); transform: translateY(-3px); }
+.stars { color: #F59E0B; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+.testimonial-card p {
+  font-size: 0.95rem; color: var(--gray-600); line-height: 1.7;
+  font-style: italic; margin-bottom: 1.5rem;
+}
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.author-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: white;
+}
+.author-info strong { display: block; font-size: 0.875rem; color: var(--blue-900); font-weight: 600; }
+.author-info span { font-size: 0.78rem; color: var(--gray-400); }
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-700) 50%, var(--blue-900) 100%);
+  padding: 5rem 2rem;
+  position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(0,212,255,0.12) 0%, transparent 60%);
+}
+.cta-banner-inner {
+  max-width: 800px; margin: 0 auto; text-align: center; position: relative;
+}
+.cta-banner h2 {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800; color: white; letter-spacing: -1px; margin-bottom: 1rem;
+}
+.cta-banner p {
+  font-size: 1.1rem; color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; line-height: 1.7;
+}
+.cta-banner-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── CONTACT ── */
+.contact-section { background: var(--gray-50); }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem;
+  align-items: start; margin-top: 3rem;
+}
+.contact-info h3 {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+  color: var(--blue-900); margin-bottom: 1rem;
+}
+.contact-info p { font-size: 0.95rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 2rem; }
+.contact-details { display: flex; flex-direction: column; gap: 1.25rem; }
+.contact-item {
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.contact-item-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--blue-100), #D4E4FF);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.contact-item strong { display: block; font-size: 0.8rem; font-weight: 700; color: var(--blue-900); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+.contact-item span { font-size: 0.9rem; color: var(--gray-600); }
+
+/* Contact Form */
+.contact-form {
+  background: white;
+  border: 1.5px solid #E8EFFF;
+  border-radius: 20px; padding: 2.5rem;
+  box-shadow: 0 8px 40px rgba(36,113,255,0.08);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.25rem; }
+.form-group label {
+  display: block; font-size: 0.82rem; font-weight: 600;
+  color: var(--blue-900); margin-bottom: 0.5rem;
+}
+.form-control {
+  width: 100%; padding: 0.75rem 1rem;
+  background: var(--gray-50);
+  border: 1.5px solid #E2E8F0; border-radius: 10px;
+  font-family: var(--font-body); font-size: 0.9rem; color: var(--gray-800);
+  transition: all 0.2s; outline: none;
+}
+.form-control:focus { border-color: var(--blue-400); background: white; box-shadow: 0 0 0 3px rgba(36,113,255,0.1); }
+.form-control::placeholder { color: #CBD5E1; }
+select.form-control { cursor: pointer; }
+textarea.form-control { resize: vertical; min-height: 120px; }
+.form-submit {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  flex-wrap: wrap;
+}
+.submit-btn {
+  background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+  color: white; border: none;
+  padding: 0.85rem 2rem; border-radius: 10px;
+  font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(36,113,255,0.35);
+  display: flex; align-items: center; gap: 8px;
+}
+.submit-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(36,113,255,0.45); }
+.form-note { font-size: 0.78rem; color: var(--gray-400); }
+
+/* Success message */
+.success-msg {
+  display: none;
+  background: #F0FDF4; border: 1.5px solid #A7F3D0;
+  border-radius: 12px; padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
+  color: #065F46; font-size: 0.9rem; font-weight: 500;
+  align-items: center; gap: 10px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--blue-900);
+  padding: 4rem 2rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-grid {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+  margin-bottom: 3rem;
+}
+.footer-brand p {
+  font-size: 0.9rem; color: rgba(255,255,255,0.45); line-height: 1.7;
+  margin: 1.25rem 0 1.5rem;
+}
+.footer-socials { display: flex; gap: 0.75rem; }
+.social-btn {
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; text-decoration: none; color: rgba(255,255,255,0.6);
+  transition: all 0.2s;
+}
+.social-btn:hover { background: var(--blue-600); border-color: var(--blue-500); color: white; }
+.footer-col h4 {
+  font-family: var(--font-display); font-size: 0.85rem; font-weight: 700;
+  color: white; letter-spacing: 0.5px; margin-bottom: 1.25rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-col a {
+  font-size: 0.85rem; color: rgba(255,255,255,0.45); text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--blue-300); }
+.footer-bottom {
+  max-width: 1280px; margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.75rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.3); }
+.footer-bottom-links { display: flex; gap: 1.5rem; }
+.footer-bottom-links a { font-size: 0.82rem; color: rgba(255,255,255,0.3); text-decoration: none; }
+.footer-bottom-links a:hover { color: rgba(255,255,255,0.7); }
+
+/* Mobile Nav */
+.mobile-menu {
+  display: none; position: fixed; top: 68px; left: 0; right: 0;
+  background: rgba(10,22,40,0.98);
+  backdrop-filter: blur(20px);
+  padding: 1.5rem;
+  z-index: 999; flex-direction: column; gap: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: rgba(255,255,255,0.8); text-decoration: none;
+  font-size: 1rem; padding: 0.75rem 1rem; border-radius: 8px;
+  transition: all 0.2s;
+}
+.mobile-menu a:hover { background: rgba(255,255,255,0.08); }
+.mobile-menu .btn-primary { text-align: center; margin-top: 0.5rem; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price-card.featured { transform: none; }
+  .price-card.featured:hover { transform: translateY(-4px); }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">TL</div>
+    <span class="logo-text">Tech<span>lance</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#testimonials">Customers</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#contact" class="btn-ghost">Sign In</a>
+    <a href="#contact" class="btn-primary">Start Free Trial</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()" id="ham">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#features" onclick="closeMenu()">Features</a>
+  <a href="#how" onclick="closeMenu()">How It Works</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#testimonials" onclick="closeMenu()">Customers</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#contact" class="btn-primary" onclick="closeMenu()">Start Free Trial</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content container">
+    <div class="hero-text">
+      <div class="hero-badge">✦ Next-Generation CRM Platform</div>
+      <h1>Close More Deals.<br>Grow <span class="gradient-text">Faster</span> Than<br>Ever Before.</h1>
+      <p>Techlance CRM unifies your sales pipeline, customer data, and team collaboration — giving you the intelligence to act at the right moment, every time.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-hero">Start Free 30-Day Trial</a>
+        <a href="#how" class="btn-hero-outline">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/></svg>
+          Watch Demo
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>45K+</strong><span>Active Users</span></div>
+        <div class="hero-stat"><strong>3.2B</strong><span>Deals Tracked</span></div>
+        <div class="hero-stat"><strong>99.9%</strong><span>Uptime SLA</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-notif">
+        <div class="notif-icon">🎉</div>
+        <div class="notif-text">
+          <strong>Deal Closed — $84,000</strong>
+          <span>TechCorp Enterprise License</span>
+        </div>
+      </div>
+      <div class="dashboard-mock">
+        <div class="mock-topbar">
+          <div class="mock-dot" style="background:#FF5F57"></div>
+          <div class="mock-dot" style="background:#FFBD2E"></div>
+          <div class="mock-dot" style="background:#28C840"></div>
+          <span class="mock-topbar-title">Techlance CRM — Sales Dashboard</span>
+        </div>
+        <div class="mock-cards">
+          <div class="mock-card">
+            <div class="mock-card-label">REVENUE</div>
+            <div class="mock-card-val">$4.2M</div>
+            <div class="mock-card-sub">▲ 24% this month</div>
+          </div>
+          <div class="mock-card">
+            <div class="mock-card-label">OPEN DEALS</div>
+            <div class="mock-card-val">187</div>
+            <div class="mock-card-sub">▲ 12 new today</div>
+          </div>
+          <div class="mock-card">
+            <div class="mock-card-label">WIN RATE</div>
+            <div class="mock-card-val">68%</div>
+            <div class="mock-card-sub">▲ 5% vs last qtr</div>
+          </div>
+        </div>
+        <div class="mock-bar-section">
+          <div class="mock-bar-title">TOP PERFORMING REPS</div>
+          <div class="mock-bars">
+            <div class="mock-bar-row">
+              <span class="mock-bar-name">A. Jordan</span>
+              <div class="mock-bar-track"><div class="mock-bar-fill" style="width:88%;background:linear-gradient(90deg,#2471FF,#00D4FF)"></div></div>
+              <span class="mock-bar-pct">88%</span>
+            </div>
+            <div class="mock-bar-row">
+              <span class="mock-bar-name">M. Chen</span>
+              <div class="mock-bar-track"><div class="mock-bar-fill" style="width:74%;background:linear-gradient(90deg,#2471FF,#7C3AED)"></div></div>
+              <span class="mock-bar-pct">74%</span>
+            </div>
+            <div class="mock-bar-row">
+              <span class="mock-bar-name">S. Patel</span>
+              <div class="mock-bar-track"><div class="mock-bar-fill" style="width:61%;background:linear-gradient(90deg,#4D8EFF,#00D4FF)"></div></div>
+              <span class="mock-bar-pct">61%</span>
+            </div>
+          </div>
+        </div>
+        <div class="mock-pipeline">
+          <div class="mock-pipe-col">
+            <div class="mock-pipe-head">PROSPECTING</div>
+            <div class="mock-pipe-item">NovaTech Inc.<br><span class="mock-pipe-amt">$24K</span></div>
+            <div class="mock-pipe-item">BlueSky Corp<br><span class="mock-pipe-amt">$18K</span></div>
+          </div>
+          <div class="mock-pipe-col">
+            <div class="mock-pipe-head">PROPOSAL</div>
+            <div class="mock-pipe-item">Apex Systems<br><span class="mock-pipe-amt">$67K</span></div>
+            <div class="mock-pipe-item">Vanta Labs<br><span class="mock-pipe-amt">$42K</span></div>
+          </div>
+          <div class="mock-pipe-col">
+            <div class="mock-pipe-head">CLOSING</div>
+            <div class="mock-pipe-item">TechCorp Ent.<br><span class="mock-pipe-amt">$84K</span></div>
+            <div class="mock-pipe-item">Mosaic AI<br><span class="mock-pipe-amt">$55K</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <span class="trust-label">Trusted by leading teams at</span>
+    <div class="trust-logos">
+      <span class="trust-logo">NovaCorp</span>
+      <span class="trust-logo">Streamline</span>
+      <span class="trust-logo">Axelio</span>
+      <span class="trust-logo">BlueSky</span>
+      <span class="trust-logo">Vantara</span>
+      <span class="trust-logo">PulseHQ</span>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="container">
+    <span class="section-tag">Platform Features</span>
+    <h2 class="section-heading">Everything you need to<br>dominate your pipeline</h2>
+    <p class="section-sub">From lead capture to contract close — Techlance gives your team an unfair advantage at every stage of the customer journey.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Visual Sales Pipeline</h3>
+        <p>Drag-and-drop Kanban boards, custom stages, and real-time deal tracking so your team always knows what to close next.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI-Powered Insights</h3>
+        <p>Built-in predictive scoring surfaces your hottest leads and warns you before deals go cold — powered by machine learning trained on billions of sales signals.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📧</div>
+        <h3>Email & Sequence Automation</h3>
+        <p>Design multi-step outreach sequences, A/B test subject lines, and track opens, clicks, and replies — all from a single inbox.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3>Revenue Analytics</h3>
+        <p>Interactive dashboards, forecast modeling, and custom reports give leadership the clarity they need to make bold decisions fast.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <h3>400+ Integrations</h3>
+        <p>Connect Slack, HubSpot, Zapier, Stripe, Outlook, Google Workspace, and hundreds more tools your team already relies on.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Enterprise Security</h3>
+        <p>SOC 2 Type II certified, GDPR compliant, 256-bit encryption at rest and in transit. Role-based permissions and audit logs included.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="container">
+    <span class="section-tag">How It Works</span>
+    <h2 class="section-heading" style="color:white">Up and running in<br>under 30 minutes</h2>
+    <p class="section-sub">No IT team required. No complex setup. Just connect your data and start closing.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon">🚀</div>
+        <div class="step-num">1</div>
+        <h3>Create Your Account</h3>
+        <p>Sign up in 60 seconds. No credit card required for your 30-day trial. Get instant access to the full platform.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">📥</div>
+        <div class="step-num">2</div>
+        <h3>Import Your Data</h3>
+        <p>Upload a CSV or connect directly from Salesforce, HubSpot, or your email — we migrate your contacts, deals, and history.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">⚙️</div>
+        <div class="step-num">3</div>
+        <h3>Configure Your Pipeline</h3>
+        <p>Customize deal stages, assign territories, and set up automations that match exactly how your team works and sells.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">💰</div>
+        <div class="step-num">4</div>
+        <h3>Close & Scale</h3>
+        <p>Watch win rates climb. Use AI insights and revenue forecasts to hit quota quarter after quarter without burning out your team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="center">
+      <span class="section-tag">Pricing</span>
+      <h2 class="section-heading">Simple, honest pricing</h2>
+      <p class="section-sub">No hidden fees. Cancel anytime. Every plan includes onboarding support and our 30-day money-back guarantee.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-val"><sup>$</sup>29<sub>/mo per user</sub></div>
+        <p class="price-desc">Perfect for small sales teams just getting started with CRM.</p>
+        <hr class="price-divider">
+        <ul class="price-features">
+          <li><span class="check">✓</span> Up to 5 users</li>
+          <li><span class="check">✓</span> 10,000 contacts</li>
+          <li><span class="check">✓</span> Basic pipeline management</li>
+          <li><span class="check">✓</span> Email integration</li>
+          <li><span class="check">✓</span> Standard reports</li>
+          <li><span class="check">✓</span> 24/7 chat support</li>
+        </ul>
+        <a href="#contact" class="btn-price btn-price-outline">Get Started Free</a>
+      </div>
+      <div class="price-card featured">
+        <div class="popular-badge">⚡ Most Popular</div>
+        <div class="price-name">Professional</div>
+        <div class="price-val"><sup>$</sup>79<sub>/mo per user</sub></div>
+        <p class="price-desc">For growing teams that need automation, AI, and deeper analytics.</p>
+        <hr class="price-divider">
+        <ul class="price-features">
+          <li><span class="check">✓</span> Unlimited users</li>
+          <li><span class="check">✓</span> 500,000 contacts</li>
+          <li><span class="check">✓</span> AI deal scoring</li>
+          <li><span class="check">✓</span> Email sequences & automation</li>
+          <li><span class="check">✓</span> Advanced analytics & forecasting</li>
+          <li><span class="check">✓</span> 100+ integrations</li>
+          <li><span class="check">✓</span> Priority support + onboarding</li>
+        </ul>
+        <a href="#contact" class="btn-price btn-price-featured">Start 30-Day Free Trial</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Enterprise</div>
+        <div class="price-val" style="font-size:2.2rem">Custom</div>
+        <p class="price-desc">For large organisations with advanced security and compliance needs.</p>
+        <hr class="price-divider">
+        <ul class="price-features">
+          <li><span class="check">✓</span> Everything in Professional</li>
+          <li><span class="check">✓</span> Unlimited contacts & storage</li>
+          <li><span class="check">✓</span> SSO & SAML authentication</li>
+          <li><span class="check">✓</span> Custom roles & permissions</li>
+          <li><span class="check">✓</span> Dedicated account manager</li>
+          <li><span class="check">✓</span> SLA uptime guarantee</li>
+          <li><span class="check">✓</span> On-premise deployment option</li>
+        </ul>
+        <a href="#contact" class="btn-price btn-price-outline">Talk to Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="center">
+      <span class="section-tag">Customer Stories</span>
+      <h2 class="section-heading">Sales teams love Techlance</h2>
+      <p class="section-sub">Don't just take our word for it — hear from the teams closing bigger deals, faster.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Techlance completely transformed how our team manages the pipeline. We've seen a 40% increase in close rate in just three months. The AI insights are genuinely game-changing."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: linear-gradient(135deg, #2471FF, #00D4FF)">AJ</div>
+          <div class="author-info">
+            <strong>Amanda Johnson</strong>
+            <span>VP of Sales, NovaTech Inc.</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"We switched from Salesforce and cut our CRM costs by 60% without losing a single feature we cared about. The migration took less than a day and the support team was phenomenal."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: linear-gradient(135deg, #7C3AED, #2471FF)">MC</div>
+          <div class="author-info">
+            <strong>Marcus Chen</strong>
+            <span>Head of Revenue, Streamline Labs</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"The email automation alone is worth the subscription. Our outbound sequence response rates went from 4% to 18% in six weeks. The ROI is undeniable."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: linear-gradient(135deg, #0EA5E9, #2471FF)">SP</div>
+          <div class="author-info">
+            <strong>Sofia Patel</strong>
+            <span>Sales Director, Axelio Group</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-banner-inner">
+    <h2>Ready to build a better sales machine?</h2>
+    <p>Join 45,000+ sales professionals who use Techlance to close more deals with less effort. Start your free trial today — no credit card required.</p>
+    <div class="cta-banner-actions">
+      <a href="#contact" class="btn-hero">Start Free 30-Day Trial</a>
+      <a href="#contact" class="btn-hero-outline">Schedule a Demo</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <span class="section-tag">Contact Us</span>
+    <h2 class="section-heading">Let's talk about your<br>sales growth</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>We're here to help you succeed</h3>
+        <p>Whether you're evaluating Techlance, need help with onboarding, or want to discuss an enterprise deal — our team is ready for you.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div>
+              <strong>Email</strong>
+              <span>hello@techlance.io</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <strong>Sales Hotline</strong>
+              <span>+1 (800) 825-4372</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div>
+              <strong>Live Chat</strong>
+              <span>Available Mon–Fri, 9am–6pm EST</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🏢</div>
+            <div>
+              <strong>Headquarters</strong>
+              <span>350 Fifth Avenue, New York, NY 10118</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--blue-900);margin-bottom:1.5rem;">Send us a message</h3>
+        <div id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" class="form-control" placeholder="John">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" class="form-control" placeholder="Smith">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Work Email *</label>
+              <input type="email" id="email" class="form-control" placeholder="john@company.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" class="form-control" placeholder="+1 (555) 000-0000">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">Company Name *</label>
+              <input type="text" id="company" class="form-control" placeholder="Acme Corporation">
+            </div>
+            <div class="form-group">
+              <label for="teamSize">Team Size</label>
+              <select id="teamSize" class="form-control">
+                <option value="">Select size…</option>
+                <option>1–5 users</option>
+                <option>6–25 users</option>
+                <option>26–100 users</option>
+                <option>100+ users</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="interest">I'm interested in…</label>
+            <select id="interest" class="form-control">
+              <option value="">Select topic…</option>
+              <option>Starting a free trial</option>
+              <option>Scheduling a product demo</option>
+              <option>Enterprise pricing & features</option>
+              <option>Migrating from another CRM</option>
+              <option>Technical support</option>
+              <option>Partnership opportunities</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" class="form-control" placeholder="Tell us what you're looking to achieve with Techlance…"></textarea>
+          </div>
+          <div class="form-submit">
+            <button class="submit-btn" onclick="submitForm()">
+              Send Message
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/></svg>
+            </button>
+            <span class="form-note">🔒 Your information is secure and never shared.</span>
+          </div>
+          <div class="success-msg" id="successMsg">
+            ✅ &nbsp; <strong>Message sent!</strong> A member of our team will reach out within one business day.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="text-decoration:none">
+        <div class="logo-icon">TL</div>
+        <span class="logo-text">Tech<span>lance</span></span>
+      </a>
+      <p>Techlance CRM empowers sales teams worldwide with intelligent tools to build stronger customer relationships and close more business.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">f</a>
+        <a href="#" class="social-btn">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#">Integrations</a></li>
+        <li><a href="#">Changelog</a></li>
+        <li><a href="#">Roadmap</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Press Kit</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">API Reference</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Webinars</a></li>
+        <li><a href="#">Support Center</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Techlance, Inc. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Settings</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 20) {
+    nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.4)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+});
+
+// Hamburger menu
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// Contact form
+function submitForm() {
+  const required = ['firstName', 'lastName', 'email', 'company'];
+  let valid = true;
+  required.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) {
+      el.style.borderColor = '#EF4444';
+      el.style.background = '#FFF5F5';
+      valid = false;
+      setTimeout(() => {
+        el.style.borderColor = '#E2E8F0';
+        el.style.background = 'var(--gray-50)';
+      }, 2500);
+    }
+  });
+  const emailEl = document.getElementById('email');
+  if (emailEl.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+    emailEl.style.borderColor = '#EF4444';
+    setTimeout(() => { emailEl.style.borderColor = '#E2E8F0'; }, 2500);
+    valid = false;
+  }
+  if (!valid) return;
+
+  // Simulate submit
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  btn.style.opacity = '0.75';
+
+  setTimeout(() => {
+    btn.style.display = 'none';
+    const successMsg = document.getElementById('successMsg');
+    successMsg.style.display = 'flex';
+    // Clear form
+    ['firstName','lastName','email','phone','company','teamSize','interest','message'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+  }, 1400);
+}
+
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
